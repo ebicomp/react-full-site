@@ -1,31 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
 const Footer = () => {
-  return <h4>footer</h4>
+  return <Wrapper>
+    <h5>
+      &copy;{new Date().getFullYear()} <span>ComfySloth</span>
+    </h5>
+    <p>All Rights Reserved</p>
+  </Wrapper>
 }
 
-const Wrapper = styled.footer`
-  height: 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--clr-black);
-  text-align: center;
-  span {
-    color: var(--clr-primary-5);
-  }
-  h5 {
-    color: var(--clr-white);
-    margin: 0.1rem;
+const Wrapper = styled.div`
+height:5rem;
+background-color:var(--clr-black);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+color:white;
+text-align:center;
+p{
+  color:white;
+}
+span{
+  color:var(--clr-primary-5);
+}
+h5{
 
-    font-weight: 400;
-    text-transform: none;
-    line-height: 1.25;
-  }
-  @media (min-width: 776px) {
-    flex-direction: row;
-  }
+  margin:0.1rem;
+  font-weight:400;
+  text-transform:none;
+  line-height:1.25;
+}
+@media (min-width:776px){
+  flex-direction:row;
+}
+p{
+  margin-bottom:0;
+}
 `
+
 
 export default Footer

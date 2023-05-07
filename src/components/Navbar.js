@@ -7,76 +7,127 @@ import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
+import {FiMenu} from "react-icons/fi"
 
 const Nav = () => {
-  return <h4>navbar</h4>
+  return <NavContainer>
+    <div className="nav-center">
+      <div className="nav-header">
+        {/* <Link to="/"> */}
+          <img src={logo} alt="navheader" />
+        {/* </Link> */}
+      </div>
+      <ul className="nav-links">
+        {links.map(link=>{
+          const {id, text, url} = link;
+          return <li><a>{text} </a></li>
+        })}
+      </ul>
+      <CartButtons />
+      <button className="nav-toggle">
+        <FaBars/>
+      </button>
+    </div>
+  </NavContainer>
 }
 
 const NavContainer = styled.nav`
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+height:5rem;
+display:flex;
+align-items:center;
+justify-content:center;
+.nav-center{
+  width:90vw;
+  max-height:var(--max-height);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nav-links{
+  display:none;
+}
 
-  .nav-center {
-    width: 90vw;
-    margin: 0 auto;
-    max-width: var(--max-width);
+.cart-btn-wrapper{
+  display:none;
+}
+.nav-toggle{
+  background:transparent;
+  border:transparent;
+  color:var(--clr-primary-5);
+  cursor:pointer;
+  svg{
+    font-size:2rem;
   }
-  .nav-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    img {
-      width: 175px;
-      margin-left: -15px;
+  
+}
+
+@media screen and (min-width:992px){
+  .nav-links{
+  display:flex;
+  justify-content:center;
+      li{
+      margin:0 0.5rem
     }
-  }
-  .nav-toggle {
-    background: transparent;
-    border: transparent;
-    color: var(--clr-primary-5);
-    cursor: pointer;
-    svg {
-      font-size: 2rem;
-    }
-  }
-  .nav-links {
-    display: none;
-  }
-  .cart-btn-wrapper {
-    display: none;
-  }
-  @media (min-width: 992px) {
-    .nav-toggle {
-      display: none;
-    }
-    .nav-center {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      li {
-        margin: 0 0.5rem;
+      a{
+           color: var(--clr-grey-3);
+            font-size: 1rem;
+         text-transform: capitalize;
+         letter-spacing: var(--spacing);
+         padding: 0.5rem;
+         :hover {
+           border-bottom: 2px solid var(--clr-primary-7);
+         }
+       }
       }
-      a {
-        color: var(--clr-grey-3);
-        font-size: 1rem;
-        text-transform: capitalize;
-        letter-spacing: var(--spacing);
-        padding: 0.5rem;
-        &:hover {
-          border-bottom: 2px solid var(--clr-primary-7);
-        }
-      }
-    }
-    .cart-btn-wrapper {
-      display: grid;
-    }
-  }
+}
+
+.nav-toggle{
+  display:none;
+}
+.cart-btn-wrapper{
+  display:grid;
+}
+}
+
 `
 
-export default Nav
+
+
+
+
+//   .cart-btn-wrapper {
+//     display: none;
+//   }
+//   @media (min-width: 992px) {
+//     .nav-toggle {
+//       display: none;
+//     }
+//     .nav-center {
+//       display: grid;
+//       grid-template-columns: auto 1fr auto;
+//       align-items: center;
+//     }
+//     .nav-links {
+//       display: flex;
+//       justify-content: center;
+//       li {
+//         margin: 0 0.5rem;
+//       }
+//       a {
+//         color: var(--clr-grey-3);
+//         font-size: 1rem;
+//         text-transform: capitalize;
+//         letter-spacing: var(--spacing);
+//         padding: 0.5rem;
+//         &:hover {
+//           border-bottom: 2px solid var(--clr-primary-7);
+//         }
+//       }
+//     }
+//     .cart-btn-wrapper {
+//       display: grid;
+//     }
+//   }
+// `
+
+ export default Nav
